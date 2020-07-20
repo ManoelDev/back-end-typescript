@@ -1,6 +1,6 @@
 # Estudos Back-and
 
-## hoje estou estudando Node.JS com ( Express + TypeScript + TypeORM + EsLint + Prettier ) no back-end
+## Hoje estou estudando Node.JS com ( Express + TypeScript + TypeORM + EsLint + Prettier ) no back-end
 
 ### Onde iniciei o projeto com
 ```bash
