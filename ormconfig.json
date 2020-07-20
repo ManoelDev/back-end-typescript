@@ -1,0 +1,23 @@
+{
+	"type": "postgres",
+	"host": "10.0.0.2",
+	"port": "5432",
+	"username": "postgres",
+	"password": "docker",
+  "database": "gostack_gobarber",
+  "logging": false,
+  "entities": [
+    "./src/models/*.ts"
+  ],
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "subscribers": [
+    "./src/database/subscriber/*.ts"
+ ],
+  "cli": {
+    "entitiesDir": "./src/models",
+    "migrationsDir": "./src/database/migrations",
+    "subiscribersDir": "./src/database/subiscriber"
+  }
+}
