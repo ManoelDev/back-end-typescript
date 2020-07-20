@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import express from 'express';
 import routes from './routes/index';
 import './database';
@@ -5,8 +6,8 @@ import './database';
 const Port = 3333;
 
 const app = express();
-
 app.use(express.json());
+
 app.use(routes);
 
 app.listen(Port, () => {
