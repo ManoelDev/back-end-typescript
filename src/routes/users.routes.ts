@@ -29,11 +29,7 @@ usersRouter.post('/', async (request, response) => {
   }
   const hasdPassword = await bcrypt.hash(password, 8);
 
-  const userReg = usersRepository.create({
-    name,
-    email,
-    password: hasdPassword,
-  });
+  const userReg = usersRepository.create({ name, email, password: hasdPassword });
 
   await usersRepository.save(userReg);
 

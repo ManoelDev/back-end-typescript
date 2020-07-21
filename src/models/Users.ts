@@ -1,11 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  Timestamp,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('users')
 class User {
@@ -22,7 +15,7 @@ class User {
   password: string;
 
   @Column()
-  status: boolean;
+  active: boolean;
 
   @CreateDateColumn()
   created_at: Timestamp;

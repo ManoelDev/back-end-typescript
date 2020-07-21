@@ -7,36 +7,15 @@ export class CreateUsers1595215774541 implements MigrationInterface {
       new Table({
         name: 'users',
         columns: [
-          {
-            name: 'id',
-            type: 'uuid',
-            isPrimary: true,
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
-          },
+          { name: 'id', type: 'uuid', isPrimary: true, generationStrategy: 'uuid', default: 'uuid_generate_v4()' },
 
           { name: 'name', type: 'varchar' },
           { name: 'email', type: 'varchar', isUnique: true },
           { name: 'password', type: 'varchar' },
-          {
-            name: 'status',
-            type: 'boolean',
-            default: false,
-            isNullable: true,
-          },
+          { name: 'active', type: 'boolean', isNullable: true, default: false },
 
-          {
-            name: 'created_at',
-            type: 'timestamp with time zone',
-            default: 'now()',
-            isNullable: true,
-          },
-          {
-            name: 'updated_at',
-            type: 'timestamp with time zone',
-            default: 'now()',
-            isNullable: true,
-          },
+          { name: 'created_at', type: 'timestamp with time zone', isNullable: true, default: 'now()' },
+          { name: 'updated_at', type: 'timestamp with time zone', isNullable: true, default: 'now()' },
         ],
       }),
     );
