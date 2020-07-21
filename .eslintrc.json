@@ -19,7 +19,8 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "camelcase": "off"
   },
   "settings": {
     "import/resolve": {

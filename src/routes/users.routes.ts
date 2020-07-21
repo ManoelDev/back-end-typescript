@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getRepository, getCustomRepository } from 'typeorm';
+import bcrypt from 'bcryptjs';
 import User from '../models/Users';
 import UserRespository from '../repositories/UsersRepository';
 
@@ -13,8 +14,31 @@ usersRouter.get('/', async (request, response) => {
 
 usersRouter.get('/:name', async (resquest, response) => {
   const userRepository = getCustomRepository(UserRespository);
-  const users = userRepository.findbyName(resquest.params.name);
+  const users = await userRepository.findbyName(resquest.params.name);
   return response.status(200).json(users);
+});
+
+usersRouter.post('/', async (request, response) => {
+  const { name, email, password } = request.body;
+  const usersRepository = getRepository(User);
+
+  const userExist = await usersRepository.findOne({ where: { email } });
+
+  if (userExist) {
+    return response.status(409).json({ error: 'Email em uso' });
+  }
+  const hasdPassword = await bcrypt.hash(password, 8);
+
+  const userReg = usersRepository.create({
+    name,
+    email,
+    password: hasdPassword,
+  });
+
+  await usersRepository.save(userReg);
+
+  delete userReg.password;
+  return response.status(201).json(userReg);
 });
 
 export default usersRouter;

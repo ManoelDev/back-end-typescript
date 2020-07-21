@@ -18,10 +18,25 @@ export class CreateUsers1595215774541 implements MigrationInterface {
           { name: 'name', type: 'varchar' },
           { name: 'email', type: 'varchar', isUnique: true },
           { name: 'password', type: 'varchar' },
-          { name: 'status', type: 'boolean', default: false },
+          {
+            name: 'status',
+            type: 'boolean',
+            default: false,
+            isNullable: true,
+          },
 
-          { name: 'created_at', type: 'timestamp with time zone' },
-          { name: 'updated_at', type: 'timestamp with time zone' },
+          {
+            name: 'created_at',
+            type: 'timestamp with time zone',
+            default: 'now()',
+            isNullable: true,
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp with time zone',
+            default: 'now()',
+            isNullable: true,
+          },
         ],
       }),
     );
