@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import Addresses from './Addresses';
 @Entity('users')
-class User {
+class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -15,12 +15,13 @@ class User {
   password: string;
 
   @Column()
-  active: boolean;
+  status: string;
 
-  @CreateDateColumn()
-  created_at: Timestamp;
+  @Column()
+  auth: string;
 
-  @UpdateDateColumn()
-  updated_at: Timestamp;
+  @OneToOne(() => Addresses)
+  @JoinColumn({ name: 'addresses_id' })
+  addresses: Addresses;
 }
-export default User;
+export default Users;
