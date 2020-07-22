@@ -16,6 +16,9 @@ export default class CreateAddress1595376600455 implements MigrationInterface {
           { name: 'postcode', type: 'varchar' },
           { name: 'gps_lat', type: 'float' },
           { name: 'gps_long', type: 'float' },
+
+          { name: 'created_at', type: 'timestamp', default: 'now()' },
+          { name: 'updated_at', type: 'timestamp', default: 'now()' },
         ],
       }),
     );

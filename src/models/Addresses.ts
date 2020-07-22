@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 import Users from './Users';
 
 @Entity()
@@ -32,6 +32,12 @@ class Addresses {
 
   @Column()
   gps_long: string;
+
+  @UpdateDateColumn()
+  created_at: Date;
+
+  @CreateDateColumn()
+  updated_at: Date;
 
   @OneToOne(() => Users, () => Addresses)
   @JoinColumn({ name: 'user_id' })
