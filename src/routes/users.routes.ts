@@ -42,7 +42,7 @@ usersRouter.post('/', async (request, response) => {
   await usersRepository.save(userReg);
 
   delete userReg.password;
-  return response.status(201).json({ mesage: 'Successful register', ...userReg });
+  return response.status(201).json({ message: 'Successfully registered', ...userReg });
 });
 
 export default usersRouter;

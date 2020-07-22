@@ -20,8 +20,8 @@ class Users {
   @Column()
   auth: string;
 
-  @OneToOne(() => Addresses)
+  @OneToOne(() => Addresses, () => Users)
   @JoinColumn({ name: 'addresses_id' })
-  addresses: Addresses;
+  address: Addresses;
 }
 export default Users;

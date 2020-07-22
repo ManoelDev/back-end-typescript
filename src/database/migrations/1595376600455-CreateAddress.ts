@@ -22,7 +22,7 @@ export default class CreateAddress1595376600455 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'users',
       new TableForeignKey({
-        name: 'addresses',
+        name: 'userAddresses',
         columnNames: ['addresses_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'addresses',
@@ -30,10 +30,22 @@ export default class CreateAddress1595376600455 implements MigrationInterface {
         onUpdate: 'CASCADE',
       }),
     );
+    await queryRunner.createForeignKey(
+      'addresses',
+      new TableForeignKey({
+        name: 'addressesUser',
+        columnNames: ['user_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'users',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('users', 'addresses');
+    await queryRunner.dropForeignKey('addresses', 'addressesUser');
+    await queryRunner.dropForeignKey('users', 'userAddresses');
     await queryRunner.dropTable('addresses');
   }
 }

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import Users from './Users';
 
 @Entity()
 class Addresses {
@@ -31,6 +32,10 @@ class Addresses {
 
   @Column()
   gps_long: string;
+
+  @OneToOne(() => Users, () => Addresses)
+  @JoinColumn({ name: 'user_id' })
+  user: Users;
 }
 
 export default Addresses;
