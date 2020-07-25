@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn } from 'typeorm';
 import Addresses from './Addresses';
+
 @Entity('users')
 class Users {
   @PrimaryGeneratedColumn('uuid')
@@ -20,14 +21,8 @@ class Users {
   @Column()
   auth: string;
 
-  @OneToOne(() => Addresses, () => Users)
-  @JoinColumn({ name: 'addresses_id' })
+  @OneToMany(() => Addresses, address => address.user)
+  @JoinColumn({ name: 'id' })
   address: Addresses;
-
-  @UpdateDateColumn()
-  created_at: Date;
-
-  @CreateDateColumn()
-  updated_at: Date;
 }
 export default Users;

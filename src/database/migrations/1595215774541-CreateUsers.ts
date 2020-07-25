@@ -11,13 +11,9 @@ export class CreateUsers1595215774541 implements MigrationInterface {
 
           { name: 'name', type: 'varchar' },
           { name: 'email', type: 'varchar', isUnique: true },
-          { name: 'status', type: 'boolean', isNullable: true, default: false },
           { name: 'password', type: 'varchar' },
+          { name: 'status', type: 'boolean', isNullable: true, default: false },
           { name: 'auth', type: 'integer', isNullable: true, default: 0 },
-          { name: 'addresses_id', type: 'uuid', isNullable: true },
-
-          { name: 'created_at', type: 'timestamp', default: 'now()' },
-          { name: 'updated_at', type: 'timestamp', default: 'now()' },
         ],
       }),
     );
