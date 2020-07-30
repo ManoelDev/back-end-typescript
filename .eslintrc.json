@@ -20,7 +20,8 @@
   ],
   "rules": {
     "prettier/prettier": "error",
-    "camelcase": "off"
+    "camelcase": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next"}]
   },
   "settings": {
     "import/resolve": {

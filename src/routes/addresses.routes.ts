@@ -7,7 +7,7 @@ const addressRouter = Router();
 addressRouter.get('/', async (request, response) => {
   const addressRepository = getRepository(Addresses);
 
-  const address = await addressRepository.find({ relations: ['users'] });
+  const address = await addressRepository.find({ relations: ['user'] });
   return response.status(200).json(address);
 });
 

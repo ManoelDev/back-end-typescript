@@ -1,22 +1,12 @@
+import dotenv from 'dotenv';
 import 'reflect-metadata';
 import './database';
-import express from 'express';
-import cors from 'cors';
-import routes from './routes/index';
+import app from './app';
 
-const Port = 3333;
+dotenv.config();
 
-const app = express();
-app.use(cors());
+const PORT = process.env.SERVER_PORT || 3334;
 
-app.use(express.json());
-app.use((request, response, next) => {
-  response.setHeader('X-Powered-By', '[ progamo ]');
-  next();
-});
-
-app.use(routes);
-
-app.listen(Port, () => {
-  console.log('\x1b[32m', `🔊 Server Started on port ${Port}`, '\x1b[0m');
+app.listen(PORT, () => {
+  console.log('\x1b[32m', `>> Server Started on port ${PORT}`, '\x1b[0m');
 });

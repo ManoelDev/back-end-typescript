@@ -6,7 +6,7 @@ class Addresses {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ select: false })
   user_id: string;
 
   @Column()
